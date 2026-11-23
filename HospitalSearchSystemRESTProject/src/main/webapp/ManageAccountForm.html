@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Manage Account</title>
+</head>
+<body>
+	<h2>Update Account (PUT)</h2>
+	<form id="updateForm">
+		Account ID: <input type="text" id="updateId"><br><br>
+		New name: <input type="text" id="updateName"><br><br>
+		New e-mail: <input type="text" id="updateEmail"><br><br>
+		New password: <input type="password" id="updatePassword"><br><br>
+		<input type="submit" value="Update Account">
+	</form>
+	
+	<h2>Delete Account (DELETE)</h2>
+	<form id="deleteForm">
+		Account ID: <input type="text" id="deleteId"><br><br>
+		<input type="submit" value="Delete Account">
+	</form>
+	
+	<p id="result"></p>
+	
+	<p id="afterDelete" style="display:none"><a href="index.html">Back to the login page</a></p>
+	
+	<p><a href="index.html">Log out</a></p>
+	<p><a id="homeLink" href="home.html">Home</a></p>
+	
+	<script>
+		var accountId = new URLSearchParams(window.location.search).get("id");
+		if (accountId) {
+			document.getElementById("updateId").value = accountId;
+			document.getElementById("deleteId").value = accountId;
+			document.getElementById("updateId").readOnly = true;
+			document.getElementById("deleteId").readOnly = true;
+			document.getElementById("homeLink").href = "home.html?id=" + accountId;
+		}
+		
+		function showResult(text) {
+			document.getElementById("result").textContent = text;
+		}
+		
+		document.getElementById("updateForm").addEventListener("submit", function (event) {
+			event.preventDefault();
+			var url = "rest/accounts"
+				+ "?id=" + encodeURIComponent(document.getElementById("updateId").value)
+				+ "&name=" + encodeURIComponent(document.getElementById("updateName").value)
+				+ "&email=" + encodeURIComponent(document.getElementById("updateEmail").value)
+				+ "&password=" + encodeURIComponent(document.getElementById("updatePassword").value);
+			fetch(url, { method: "PUT" }).then(function (response) {
+				return response.text().then(function (text) { showResult(text); });
+			});
+		});
+		
+		document.getElementById("deleteForm").addEventListener("submit", function (event) {
+			event.preventDefault();
+			var url = "rest/accounts?id=" + encodeURIComponent(document.getElementById("deleteId").value);
+			fetch(url, { method: "DELETE" }).then(function (response) {
+				return response.text().then(function (text) {
+					showResult(text);
+					if (text.indexOf("were deleted") !== -1) {
+						document.getElementById("afterDelete").style.display = "block";
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

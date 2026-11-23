@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Home</title>
+</head>
+<body>
+	<h2>Home</h2>
+	<ul>
+		<li><a href="NearestHospitalForm.html">Find the nearest hospital</a></li>
+		<li><a href="SpecialtyForm.html">Search hospital by specialty</a></li>
+		<li><a href="rest/hospitals">View all hospitals</a></li>
+		<li><a id="manageLink" href="ManageAccountForm.html">Update or delete my account</a></li>
+	</ul>
+	<p><a href="index.html">Log out></a></p>
+	<script>
+		var id =  new URLSearchParams(window.location.search).get("id");
+		if (id) {
+			document.getElementById("manageLink").href = "manageAccountForm.html?id=" + id;
+		}
+	</script>
+</body>
+</html>

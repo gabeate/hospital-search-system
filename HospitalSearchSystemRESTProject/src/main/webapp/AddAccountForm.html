@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Create Account</title>
+</head>
+<body>
+<h1>Create an Account</h1>
+<form method="post" action="rest/accounts/addAccount">
+	<label> Name: <INPUT type="text" name="name" size="20"/></label><br/>
+	<label> E-mail: <INPUT type="email" name="email" size="20"/></label><br/>
+	<label> Password: <INPUT type="password" name="password" size="20"/></label><br/>
+	
+	<input type="submit" name="submit" value="Submit Info"/>
+	<input type="reset" name="bcancel" value="Cancel"/>
+</form>
+</body>
+</html>

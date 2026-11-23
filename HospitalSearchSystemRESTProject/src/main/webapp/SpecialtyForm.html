@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Search by Specialty</title>
+</head>
+<body>
+<h2>Search Hospitals by Specialty</h2>
+<form method="get" action="rest/hospitals/searchSpecialty">
+	<label> Specialty:
+		<select name="specialty">
+			<option value="Emergency">Emergency</option>
+			<option value="Cardiology">Cardiology</option>
+			<option value="Pediatrics">Pediatrics</option>
+		</select>
+	</label><br/>
+	
+	<input type="submit" name="submit" value="Search"/>
+	<input type="reset" name="bcancel" value="Cancel"/>
+</form>
+<p><a href="home.html">Home</a></p>
+</body>
+</html>

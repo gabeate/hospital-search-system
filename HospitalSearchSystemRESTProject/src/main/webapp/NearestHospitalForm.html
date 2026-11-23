@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Nearest Hospital</title>
+</head>
+<body>
+<h2>Find the Nearest Hospital</h2>
+<form method="get" action="rest/hospitals/nearest">
+	<label> Latitude: <INPUT type="number" name="lat" step="any" size="20" required/></label><br/>
+	<label> Longitude: <INPUT type="number" name="long" step="any" size="20" required/></label><br/>
+	
+	<input type="submit" name="submit" value="Find Hospital"/>
+	<input type="reset" name="bcancel" value="Cancel"/>
+</form>
+<p><a href="home.html">Home</a></p>
+</body>
+</html>

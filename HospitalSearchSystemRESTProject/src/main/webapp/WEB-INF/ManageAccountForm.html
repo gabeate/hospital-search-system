@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Update Account (PUT)</h2>
+	<form id="updateForm">
+		Account ID: <input type="text" id="updateId"><br><br>
+		New Name: <input type="text" id="updateName"><br><br>
+		New E-mail: <input type="text" id="updateEmail"><br><br>
+		New Password: <input type="password" id="updatePassword"><br><br>
+		<input type="submit" value="Update account">
+	</form>
+	
+	<h2>Delete Account (DELETE)</h2>
+	<form id="deleteForm">
+	Account ID: <input type="text" id="deleteId"><br><br>
+	<input type="submit" value="Delete Account">
+	</form>
+	
+	<h3>Server response</h3>
+	<pre id="result"></pre>
+	
+	<p><a href="index.html">Home</a></p>
+	
+	<script>
+		function showResult(method, response, text) {
+			document.getElementById("result").textContent = 
+				method + "-> HTTP " + response.status + "\n" + text;
+		}
+		
+		document.getElementById("updateForm").addEventListener("submit, function (event) {
+			event.preventDefault();
+			var url = "rest/accounts"
+				+ "?id=" + encodeURICompoenent(document.getElementById("updateId").value)
+				+
+		}
+		</script>
+
+</body>
+</html>
